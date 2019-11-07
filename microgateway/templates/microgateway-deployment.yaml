@@ -124,6 +124,8 @@ spec:
         {{ if .Values.wso2.monitoring.enabled }}
         - name: shared-prometheus-jmx-jar
           mountPath: /home/wso2carbon/prometheus
+        - name: microgateway-prometheus-exporter-conf
+          mountPath: /home/wso2carbon/prometheus/config.yaml
         {{ end }}
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs
@@ -191,4 +193,7 @@ spec:
         {{ if .Values.wso2.monitoring.enabled }}
         - name: shared-prometheus-jmx-jar
           emptyDir: {}
+        - name: microgateway-prometheus-exporter-conf
+          configMap:
+            name: microgateway-prometheus-exporter-conf
         {{ end }}
