@@ -120,6 +120,10 @@ spec:
         - name: microgateway-logging
           mountPath: /home/ballerina/init/init.sh
           subPath: init.sh
+        {{ if .Values.wso2.monitoring.enabled }}
+        - name: shared-prometheus-jmx-jar
+          mountPath: /home/wso2carbon/prometheus
+        {{ end }}
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs
           mountPath: home/ballerina/logs
