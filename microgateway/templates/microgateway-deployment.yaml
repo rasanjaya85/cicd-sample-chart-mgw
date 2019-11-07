@@ -49,19 +49,7 @@ spec:
       - name: init-elasticsearch
         image: busybox:1.31
         command: ['sh', '-c', 'echo -e "Checking for the availability of Elasticsearch Server deployment"; while ! nc -z {{ default "wso2-elasticsearch-master" .Values.wso2.centralizedLogging.logstash.elasticsearch.host }} 9200; do sleep 1; printf "-"; done; echo -e "  >> Elasticsearch server has started";']
-#      {{ if .Values.wso2.monitoring.enabled }}
-#      - name: init-jmx-exporter
-#        image: busybox:1.31
-#        command:
-#          - /bin/sh
-#          - "-c"
-#          - |
-#            set -e
-#            wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar -P /jmx-jar/
-#        volumeMounts:
-#          - name: shared-prometheus-jmx-jar
-#            mountPath: /jmx-jar
-#      {{ end }}
+      {{ end }}
       containers:
       - name: wso2micro-gw
         {{ if not (eq .Values.wso2.deployment.wso2microgw.dockerRegistry "") }}
@@ -120,10 +108,6 @@ spec:
         - name: microgateway-logging
           mountPath: /home/ballerina/init/init.sh
           subPath: init.sh
-#        {{ if .Values.wso2.monitoring.enabled }}
-#        - name: shared-prometheus-jmx-jar
-#          mountPath: /home/wso2carbon/prometheus
-#        {{ end }}
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs
           mountPath: home/ballerina/logs
