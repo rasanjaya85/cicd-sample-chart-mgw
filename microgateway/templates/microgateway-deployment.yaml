@@ -107,6 +107,11 @@ spec:
           protocol: TCP
         - containerPort: 9095
           protocol: TCP
+        {{ if .Values.wso2.monitoring.enabled }}
+        - containerPort: 2222
+          protocol: TCP
+          name: metrics
+        {{ end }}
         env:
         - name: PROJECT
           value: {{ .Values.wso2.deployment.wso2microgw.projectName }}
@@ -126,6 +131,7 @@ spec:
           mountPath: /home/wso2carbon/prometheus
         - name: microgateway-prometheus-exporter-conf
           mountPath: /home/wso2carbon/prometheus/config.yaml
+          subPath: config.yaml
         {{ end }}
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs

@@ -29,3 +29,9 @@ spec:
       port: 9095
       targetPort: 9095
       protocol: TCP
+    {{ if .Values.wso2.monitoring.enabled }}
+    - name: metrics
+      port: 2222
+      targetPort: 2222
+      protocol: TCP
+    {{ end }}
