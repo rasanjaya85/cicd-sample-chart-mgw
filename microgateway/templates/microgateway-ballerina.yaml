@@ -19,7 +19,7 @@ metadata:
   namespace : {{ .Release.Namespace }}
 data:
   {{- $file := .Files }}
-  {{- range $path, $byte := .Files.Glob "conf/bin/*" }}
+  {{- range $path, $byte := .Files.Glob "confs/bin/*" }}
   {{- $list := $path | splitList "/"}}
   {{- $length := len $list }}
   {{- $last := add $length -1 }}

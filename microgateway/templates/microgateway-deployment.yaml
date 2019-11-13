@@ -135,8 +135,6 @@ spec:
         - name: microgateway-prometheus-exporter-conf
           mountPath: /home/wso2carbon/prometheus/config.yaml
           subPath: config.yaml
-        - name: microgateway-bin
-          mountPath: /home/wso2carbon/wso2-config-volume/bin
         {{ end }}
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs
