@@ -24,7 +24,7 @@ spec:
     jobLabel: monitoring
     selector:
         matchLabels:
-            app: wso2is
+            app: wso2micro-gw
     Namespace Selector:
         Match Names:
             - {{ .Release.Namespace }}

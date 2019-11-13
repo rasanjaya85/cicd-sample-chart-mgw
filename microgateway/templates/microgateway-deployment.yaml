@@ -28,10 +28,14 @@ spec:
   selector:
     matchLabels:
       deployment: wso2micro-gw
+      app: wso2micro-gw
+      monitoring: {{ default "jmx" .Values.wso2.monitoring.prometheus.jmxJobName }}
   template:
     metadata:
       labels:
         deployment: wso2micro-gw
+        app: wso2micro-gw
+        monitoring: {{ default "jmx" .Values.wso2.monitoring.prometheus.jmxJobName }}
     spec:
       {{ if .Values.wso2.centralizedLogging.enabled }}
       initContainers:
