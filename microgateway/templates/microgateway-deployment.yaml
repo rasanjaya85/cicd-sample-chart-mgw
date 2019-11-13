@@ -126,6 +126,9 @@ spec:
         - name: microgateway-logging
           mountPath: /home/ballerina/init/init.sh
           subPath: init.sh
+        - name: microgateway-ballerina
+          mountPath: /home/ballerina/jmx/ballerina
+          subPath: ballerina
         {{ if .Values.wso2.monitoring.enabled }}
         - name: shared-prometheus-jmx-jar
           mountPath: /home/wso2carbon/prometheus
@@ -182,6 +185,10 @@ spec:
         - name: microgateway-logging
           configMap:
             name: microgateway-logging
+            defaultMode: 0777
+        - name: microgateway-ballerina
+          configMap:
+            name: microgateway-ballerina
             defaultMode: 0777
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs
