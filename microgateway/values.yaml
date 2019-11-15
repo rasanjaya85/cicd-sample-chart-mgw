@@ -95,6 +95,6 @@ wso2:
         # Prometheus Operator labels to identify Service monitors
         labels:
           release: monitoring
-      # Job name of the JMX eventss
+      # Job name of the JMX events
       jmxJobName: "jmx"
 
