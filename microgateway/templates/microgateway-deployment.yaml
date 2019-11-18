@@ -130,7 +130,7 @@ spec:
         - name: microgateway-logging
           mountPath: /home/ballerina/init/init.sh
           subPath: init.sh
-        - name: microgateway-ballerina
+        - name: microgateway-jmx-ballerina
           mountPath: /home/ballerina/jmx/ballerina
           subPath: ballerina
         {{ if .Values.wso2.monitoring.enabled }}
@@ -188,9 +188,9 @@ spec:
           configMap:
             name: microgateway-logging
             defaultMode: 0777
-        - name: microgateway-ballerina
+        - name: microgateway-jmx-ballerina
           configMap:
-            name: microgateway-ballerina
+            name: microgateway-jmx-ballerina
             defaultMode: 0777
         {{ if .Values.wso2.centralizedLogging.enabled }}
         - name: shared-logs

@@ -15,7 +15,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: microgateway-ballerina
+  name: microgateway-jmx-ballerina
   namespace : {{ .Release.Namespace }}
 data:
   {{- $file := .Files }}

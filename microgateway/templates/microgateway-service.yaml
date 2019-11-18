@@ -17,10 +17,10 @@ kind: Service
 metadata:
   name: wso2micro-gw-service
   namespace : {{ .Release.Namespace }}
-  labels:
-    deployment: wso2micro-gw
-    app: wso2micro-gw
-    monitoring: {{ default "jmx" .Values.wso2.monitoring.prometheus.jmxJobName }}
+#  labels:
+#    deployment: wso2micro-gw
+#    app: wso2micro-gw
+#    monitoring: {{ default "jmx" .Values.wso2.monitoring.prometheus.jmxJobName }}
 spec:
   selector:
     deployment: wso2micro-gw
